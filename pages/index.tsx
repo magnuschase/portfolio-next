@@ -19,7 +19,7 @@ const Home: NextPage = ({ data }: any) => {
 	)
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
 	const req = { name: "main" }
 
 	const res = await fetch(`${process.env.API_URL}/single`, { method: 'POST', body: JSON.stringify(req) })
