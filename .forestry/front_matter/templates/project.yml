@@ -33,3 +33,5 @@ fields:
   type: image_gallery
   config: {}
   label: Gallery
+pages:
+- static/projects/lorem-ipsum.md
