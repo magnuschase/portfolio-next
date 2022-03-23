@@ -2,7 +2,7 @@
 label: Main
 hide_body: true
 fields:
-- name: menu_button_text
+- name: menu_text
   type: text
   config:
     required: false
@@ -17,12 +17,12 @@ fields:
   config:
     required: false
   label: Last name
-- name: left_image
+- name: img_first
   type: file
   config:
     maxSize: 64
   label: Left image
-- name: right_image
+- name: img_second
   type: file
   config:
     maxSize: 64
