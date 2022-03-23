@@ -1,0 +1,24 @@
+
+.sidebar {
+	@apply bg-kapala-900 shadow-sm shadow-teal-500;
+	width: 18.75rem;
+	height: 100vh;
+	z-index: 100;
+	position: absolute;
+}
+  
+.container {
+	margin: 4.5rem 1.4rem;
+	a {
+		@apply text-kapala-700;
+		text-decoration: none;
+		font-size: 1.75rem;
+		font-weight: 600;
+		display: block;
+		margin: 20px;
+	  }
+}
+
+.close {
+	@apply absolute top-4 right-8 font-medium text-5xl;
+}

@@ -1,0 +1,58 @@
+@import "./breakpoints.scss";
+
+.nav {
+	@apply py-12 px-10 flex justify-center items-center w-screen bg-kapala-900;
+	z-index: 10;
+	position: fixed;
+	top: 0px;
+
+	@include to('md') {
+		flex-flow: column;
+	}
+
+	&__button {
+		@apply p-3 border-kapala-shadow border rounded-lg text-base font-thin;
+	}
+
+	&__buttons {
+		@apply absolute left-10 flex;
+
+		& > button {
+			@apply mx-2
+		}
+
+		@include to('lg') {
+			@apply static;
+		}
+
+		@include to('md') {
+			@apply mb-12;
+		}
+
+		@include to('xxs') {
+			@apply mb-6;
+		}
+	}
+
+	&__buttonxl {
+		@apply nav__button;
+		@apply px-9;
+	}
+
+	&__names {
+		@apply text-5xl font-thin flex;
+
+		& > h3 {
+			@apply px-12;
+
+			@include to('sm') {
+				@apply px-4
+			}
+		}
+
+		@include to('xxs') {
+			@apply text-2xl
+		}
+		
+	}
+}
