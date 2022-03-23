@@ -1,4 +1,35 @@
 ---
 label: Project
 hide_body: false
-fields: []
+fields:
+- name: title
+  type: text
+  config:
+    required: false
+  label: Title
+- name: desc
+  type: textarea
+  default: ''
+  config:
+    required: false
+    wysiwyg: false
+    schema:
+      format: markdown
+  label: Description
+- name: date
+  type: datetime
+  label: Date
+  description: creation date
+  config:
+    required: false
+    date_format: 
+    time_format: 
+    display_utc: false
+- name: technologies
+  type: tag_list
+  default: []
+  label: Technologies
+- name: gallery
+  type: image_gallery
+  config: {}
+  label: Gallery
