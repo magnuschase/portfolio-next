@@ -1,6 +1,3 @@
-import { remark } from 'remark'
-import html from 'remark-html'
-import fs from 'fs'
 import { NextApiRequest, NextApiResponse } from "next";
 import { getAllPosts } from '../../util/md';
 

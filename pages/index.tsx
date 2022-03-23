@@ -2,8 +2,6 @@ import type { NextPage } from 'next'
 import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import { remark } from 'remark'
-import html from 'remark-html'
 
 const Home: NextPage = (data) => {
 	return (
@@ -30,12 +28,13 @@ const Home: NextPage = (data) => {
 }
 
 export async function getStaticProps() {
-	const req = { name: "main" }
+	const req = { name: "projects/lorem-ipsum" }
 
 	const res = await fetch(`${process.env.API_URL}/single`, { method: 'POST', body: JSON.stringify(req) })
 	const data = await res.json()
+
 	return {
-		props: { data }, // will be passed to the page component as props
+		props: { data },
 	}
 }
 
