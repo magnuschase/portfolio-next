@@ -1,9 +1,9 @@
 @import "./breakpoints.scss";
 
 .nav {
-	@apply py-12 px-10 flex justify-center items-center w-screen bg-kapala-900;
+	@apply py-12 px-10 flex justify-center items-center w-screen ;
 	z-index: 10;
-	position: fixed;
+	position: absolute;
 	top: 0px;
 
 	@include to('md') {

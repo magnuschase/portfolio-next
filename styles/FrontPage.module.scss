@@ -1,0 +1,39 @@
+@import "./breakpoints.scss";
+
+.pentagon {
+	clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+	width: 280px;
+	@apply aspect-square;
+
+	@include to('xs') {
+		width: 200px;
+	}
+}
+
+.hex_container {
+	@apply relative;
+	height: auto;
+
+	@include to('lg') {
+		height: 200px;
+		@apply mx-auto
+	}
+
+	@include to('xs') {
+		height: 160px;
+	}
+}
+
+.border {
+	@apply bg-kapala-300 flex justify-center items-center;
+	
+	&::before {
+		content: "";
+		display: block;
+		position: relative;
+		width: 235px;
+		height: 235px;
+		@apply bg-kapala-900;
+		clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+	}
+}
