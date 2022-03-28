@@ -30,3 +30,5 @@ fields:
       file: 
       path: 
   label: Project
+pages:
+- static/project-section.md
