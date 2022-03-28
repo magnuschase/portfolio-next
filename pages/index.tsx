@@ -1,12 +1,11 @@
 import type { NextPage } from 'next'
-import Image from 'next/image'
-import { useEffect, useState } from 'react'
 import Head from 'next/head'
 import styles from '../styles/FrontPage.module.scss'
 import Nav from '../components/Nav'
 import Hr from '../components/Hr'
+import parse from 'html-react-parser'
 
-const Home: NextPage = ({ data }: any) => {
+const Home: NextPage = ({ data, about }: any) => {
 	const navProps = { text: data.menu_text, first: data.first_name, last: data.last_name }
 
 	return (
@@ -34,13 +33,9 @@ const Home: NextPage = ({ data }: any) => {
 			{/* About us */}
 			<section className="grid grid-cols-1 lg:grid-cols-2 gap-24 px-10 md:px-24 mb-12">
 				<div className="grid grid-cols-1 gap-y-12 px-0 xl:px-24">
-					<h1 className="font-thin text-2xl md:text-5xl">About me</h1>
-					<div className="font-thin text-lg md:text-2xl">I am a software developer, mainly interested
-						in web and mobile development. My hobbies
-						include cybersecurity, photography, music,
-						and widely interpreted technology. I’m based
-						in Cracow, Poland.</div>
-					<a href="mailto:jakub@kapala.xyz" className="italic text-xl">Feel free to hit me up - <span className="font-medium not-italic">jakub@kapala.xyz</span></a>
+					<h1 className="font-thin text-2xl md:text-5xl">{about.title}</h1>
+					<div className="font-thin text-lg md:text-2xl">{parse(about.post_content)}</div>
+					<a href={`mailto:${about.mail}`} className="italic text-xl">{about.footer}<span className="font-medium not-italic">{about.mail}</span></a>
 				</div>
 				<div className="grid grid-cols-1">
 					<div className={styles.hex_container}>
@@ -60,13 +55,17 @@ const Home: NextPage = ({ data }: any) => {
 
 // Fetch data from API
 export async function getServerSideProps(context: any) {
-	const request = { name: "main" }
+	const req = { name: "main" }
 
-	const res = await fetch(`http://${context.req.headers.host}/api/single`, { method: 'POST', body: JSON.stringify(request) })
+	const res = await fetch(`http://${context.req.headers.host}/api/single`, { method: 'POST', body: JSON.stringify(req) })
 	const data = await res.json()
 
+	const request = { name: 'about' }
+	const secondRes = await fetch(`http://${context.req.headers.host}/api/single`, { method: 'POST', body: JSON.stringify(request) })
+	const about = await secondRes.json()
+
 	return {
-		props: { data },
+		props: { data, about },
 	}
 }
 

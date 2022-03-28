@@ -20,6 +20,7 @@
 	"dependencies": {
 		"framer-motion": "^6.2.8",
 		"gray-matter": "^4.0.3",
+		"html-react-parser": "^1.4.9",
 		"next": "12.1.0",
 		"node-polyfill-webpack-plugin": "^1.1.4",
 		"path": "^0.12.7",
