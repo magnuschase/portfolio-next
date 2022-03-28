@@ -19,7 +19,6 @@ sections:
 - type: document
   path: static/footer.md
   label: Footer
-  match: "**/*"
 - type: heading
   label: Front page
 - type: document
@@ -31,15 +30,12 @@ sections:
 - type: document
   path: static/skills.md
   label: Skills
-  match: "**/*"
 - type: document
   path: static/timeline.md
   label: Timeline
-  match: "**/*"
 - type: document
   path: static/project-section.md
   label: Project
-  match: "**/*"
 upload_dir: public/uploads
 public_path: "/uploads"
 front_matter_path: ''

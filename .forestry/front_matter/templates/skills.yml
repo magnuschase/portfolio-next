@@ -13,3 +13,5 @@ fields:
   config: {}
   label: Logo
   description: Left side of the section (different technologies)
+pages:
+- static/skills.md
