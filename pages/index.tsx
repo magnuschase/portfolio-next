@@ -25,7 +25,7 @@ const Home: NextPage = ({ data }: any) => {
 					<img src={data.img_first} height="511px" width="304px" className="aspect-[304/511] md:h-[511px] h-300px" />
 				</div>
 				<div className="flex items-center justify-start">
-					<img src='/uploads/imac.png' height="397px" width="491px" className="hidden md:block" />
+					<img src={data.img_second} height="397px" width="491px" className="hidden md:block" />
 				</div>
 			</main>
 
