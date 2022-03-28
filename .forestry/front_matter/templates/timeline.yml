@@ -1,4 +1,89 @@
 ---
 label: Timeline
 hide_body: true
-fields: []
+fields:
+- name: item
+  type: field_group_list
+  fields:
+  - name: abbr
+    type: text
+    config:
+      required: false
+    label: Abbreviation
+    description: Small text on the pentagon (1-3 chars)
+  - name: title
+    type: text
+    config:
+      required: false
+    label: Title
+    description: Item title
+  - name: desc
+    type: textarea
+    default: ''
+    config:
+      required: false
+      wysiwyg: false
+      schema:
+        format: markdown
+    label: Description
+  - name: years
+    type: boolean
+    label: Date
+    default: false
+    description: "<em>Change the formatting of the date</em><br><strong>on</strong>
+      = <em>YYYY</em><br><strong>off</strong> = <em>MM.YYYY</em>"
+  - name: start_date
+    type: datetime
+    label: Start date
+    description: ''
+    config:
+      required: false
+      date_format: MM/YYYY
+      time_format: 
+      display_utc: false
+      export_format: MM.YYYY
+    showOnly:
+      field: years
+      value: true
+  - name: end_date
+    type: datetime
+    label: End date
+    description: ''
+    config:
+      required: false
+      date_format: MM/YYYY
+      time_format: 
+      display_utc: false
+      export_format: MM.YYYY
+    showOnly:
+      field: years
+      value: true
+  - name: first_date
+    type: datetime
+    label: Start date
+    description: ''
+    config:
+      required: false
+      date_format: YYYY
+      time_format: 
+      display_utc: false
+      export_format: YYYY
+    showOnly:
+      field: years
+  - name: second_date
+    type: datetime
+    label: End date
+    description: ''
+    config:
+      required: false
+      date_format: YYYY
+      time_format: 
+      display_utc: false
+      export_format: YYYY
+    showOnly:
+      field: years
+  config:
+    min: 
+    max: 
+    labelField: 
+  label: Item
