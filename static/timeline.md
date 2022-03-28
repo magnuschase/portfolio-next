@@ -30,5 +30,12 @@ item:
     deserunt mollit anim id est laborum
   start_date: '05.2021'
   end_date: '05.2021'
+- abbr: WA
+  title: WeAstronauts
+  desc: During my time at WeAstronauts, I have helped with creation of many blogs,
+    personal websites, e-commerce shops and web applications, primarily using React,
+    Laravel Blade, Sage and Wordpress.
+  start_date: '05.2021'
+  end_date: '03.2022'
 
 ---
