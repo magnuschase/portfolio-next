@@ -16,6 +16,9 @@ sections:
 - type: document
   path: static/contact.md
   label: Contact
+- type: document
+  path: static/footer.md
+  label: Footer
 - type: heading
   label: Front page
 - type: document
@@ -24,6 +27,15 @@ sections:
 - type: document
   path: static/about.md
   label: About me
+- type: document
+  path: static/skills.md
+  label: Skills
+- type: document
+  path: static/timeline.md
+  label: Timeline
+- type: document
+  path: static/project-section.md
+  label: Project
 upload_dir: public/uploads
 public_path: "/uploads"
 front_matter_path: ''

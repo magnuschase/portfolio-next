@@ -1,0 +1,17 @@
+---
+label: Skills
+hide_body: false
+fields:
+- name: title
+  type: text
+  config:
+    required: false
+  label: Title
+  description: Section title
+- name: logo
+  type: image_gallery
+  config: {}
+  label: Logo
+  description: Left side of the section (different technologies)
+pages:
+- static/skills.md
