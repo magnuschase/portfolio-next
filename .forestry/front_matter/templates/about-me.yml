@@ -1,4 +1,20 @@
 ---
 label: About me
 hide_body: false
-fields: []
+fields:
+- name: title
+  type: text
+  config:
+    required: false
+  label: Title
+  description: Section title
+- name: mail
+  type: text
+  config:
+    required: false
+  label: Mail
+- name: footer
+  type: text
+  config:
+    required: false
+  label: Footer
