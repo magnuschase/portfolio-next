@@ -18,3 +18,5 @@ fields:
   config:
     required: false
   label: Footer
+pages:
+- static/about.md
