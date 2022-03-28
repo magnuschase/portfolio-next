@@ -1,4 +1,20 @@
 ---
 label: Footer
 hide_body: true
-fields: []
+fields:
+- name: text
+  type: text
+  config:
+    required: false
+  label: Footer text
+- name: mail
+  type: text
+  config:
+    required: false
+  label: Mail
+- name: button
+  type: text
+  config:
+    required: false
+  label: Button
+  description: Button text
