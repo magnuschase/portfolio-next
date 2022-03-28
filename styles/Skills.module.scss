@@ -1,0 +1,63 @@
+@import "./breakpoints.scss";
+
+.list {
+	@apply mt-12;
+
+	@include to('lg') {
+		@apply mt-4
+	}
+
+	li {
+		@apply mb-4;
+		&::before {
+			content: "- "
+		}
+	}
+}
+
+.item_grid {
+	@apply grid grid-cols-4 gap-8;
+	
+	@include to('xl') {
+		@apply grid-cols-3
+	}
+
+	@include to('lg') {
+		@apply grid-cols-4 gap-4
+	}
+
+	@media (max-width: 462px) {
+		@apply grid-cols-3
+	}
+}
+
+.item {
+	@apply flex justify-center items-center h-32 w-32 p-8 pt-12 ;
+	position: relative;
+
+	@include to('sm') {
+		@apply h-24 w-24 p-6 pt-8
+	}
+
+	@include to('xxs') {
+		@apply h-20 w-20;
+	}
+}
+
+.image {
+	clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+	@apply h-32 w-32 bg-kapala-700 absolute top-0 left-0;
+	filter: blur(50px);
+
+	@include to('sm') {
+		@apply h-24 w-24
+	}
+
+	@include to('xxs') {
+		@apply h-20 w-20;
+	}
+}
+
+.logo {
+	z-index: 100;
+}

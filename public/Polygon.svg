@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="138px" height="134px" viewBox="0 0 138 134" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <filter x="-6.9%" y="-9.4%" width="113.9%" height="109.2%" filterUnits="objectBoundingBox" id="filter-1">
+            <feGaussianBlur stdDeviation="4" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+    </defs>
+    <g id="Front-page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Dekstop-HD" transform="translate(-552.000000, -1781.000000)" fill="#4E6461">
+            <polygon id="Polygon" filter="url(#filter-1)" points="621 1789 681.867617 1833.22291 658.618256 1904.77709 583.381744 1904.77709 560.132383 1833.22291"></polygon>
+        </g>
+    </g>
+</svg>
