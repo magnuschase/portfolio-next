@@ -4,6 +4,17 @@ auto_deploy: false
 admin_path: 
 webhook_url: 
 sections:
+- type: heading
+  label: Front page
+- type: document
+  path: static/main.md
+  label: Main
+- type: document
+  path: static/about.md
+  label: About me
+  match: "**/*"
+- type: heading
+  label: Other
 - type: directory
   path: static/projects
   label: Projects
@@ -12,8 +23,9 @@ sections:
   templates:
   - project
 - type: document
-  path: static/main.md
-  label: Main
+  path: static/contact.md
+  label: Contact
+  match: "**/*"
 upload_dir: public/uploads
 public_path: "/uploads"
 front_matter_path: ''
