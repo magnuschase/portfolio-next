@@ -1,4 +1,32 @@
 ---
 label: Projects section
 hide_body: true
-fields: []
+fields:
+- name: title
+  type: text
+  config:
+    required: false
+  label: Title
+  description: Section title
+- name: text
+  type: text
+  config:
+    required: false
+  label: Button text
+- name: features
+  type: text
+  config:
+    required: false
+  label: Project text
+- name: project
+  type: select
+  default: []
+  config:
+    required: false
+    options: []
+    source:
+      type: pages
+      section: projects
+      file: 
+      path: 
+  label: Project
