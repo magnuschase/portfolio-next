@@ -49,3 +49,5 @@ fields:
     max: 
     labelField: 
   label: Item
+pages:
+- static/timeline.md
