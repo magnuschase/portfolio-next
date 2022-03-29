@@ -18,3 +18,5 @@ fields:
     required: false
   label: Button
   description: Button text
+pages:
+- static/footer.md
