@@ -1,0 +1,105 @@
+@import "./breakpoints.scss";
+
+.polygon {
+	clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+	@apply bg-kapala-700 text-kapala-20 w-16 h-16 flex justify-center items-center font-thin justify-self-center select-none 
+	cursor-pointer;
+
+}
+
+.active {
+	@apply bg-kapala-300;
+}
+
+.title {
+	@apply text-kapala-shadow text-5xl font-medium mb-4;
+	@include to('md') {
+		@apply text-2xl
+	}
+}
+
+.container {
+	@apply grid;
+	grid-template-columns: 4fr 6fr;
+
+	@include to('sm') {
+		@apply grid-cols-1 gap-10
+	}
+}
+
+.pentagon {
+	clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+	width: 240px;
+	@apply aspect-square absolute;
+
+	@include to('lg') {
+		width: 200px;
+	}
+
+	&_1 {
+		@apply bg-kapala-700 left-8 top-24;
+	}
+
+	&_2 {
+		@apply bg-kapala-400 left-48 top-14;
+
+		@include from('xl'){
+			@apply right-8
+		}
+	}
+
+}
+
+.timeline {
+	@apply grid grid-cols-2 gap-10;
+
+	@include to('xl')  {
+		@apply grid-cols-1 gap-4
+	}
+}
+
+.item {
+	@apply flex flex-col pr-32;
+	min-height: 400px;
+	@include to('xl') {
+		@apply px-24 pr-24;
+	}
+
+	@include to('md') {
+		@apply px-10
+	}
+}
+
+.hex_container {
+	@apply relative flex justify-center;
+	height: auto;
+
+	@include to('sm') {
+		height: 300px;
+	}
+}
+
+.image {
+	@apply absolute left-24 -top-10 w-[240px] aspect-square;
+
+	@include to('xl') {
+		@apply top-0;
+	}
+
+	@include to('lg') {
+		@apply w-[200px];
+	}
+
+}
+
+.text_left {
+	@apply text-kapala-20 font-thin text-base absolute right-[55%];
+
+	@include to('sm') {
+		@apply left-[10%] w-24
+	}
+
+	@media(max-width: 480px) {
+		@apply w-16
+	}
+}

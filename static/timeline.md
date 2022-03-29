@@ -19,7 +19,7 @@ item:
     deserunt mollit anim id est laborum
   start_date: '11.2020'
   end_date: '12.2020'
-  title: Agencja Interaktywna Krakweb
+  title: Krakweb
 - abbr: C
   title: CISCO
   desc: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor

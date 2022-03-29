@@ -8,8 +8,9 @@ import styles from '../styles/FrontPage.module.scss'
 import Nav from '../components/Nav'
 import Hr from '../components/Hr'
 import Skills from '../components/Skills'
+import Timeline from '../components/Timeline'
 
-const Home: NextPage = ({ data, about, skills }: any) => {
+const Home: NextPage = ({ data, about, skills, item }: any) => {
 	const navProps = { text: data.menu_text, first: data.first_name, last: data.last_name }
 	return (
 		<div>
@@ -54,6 +55,8 @@ const Home: NextPage = ({ data, about, skills }: any) => {
 			<Hr flip={true} />
 			<Skills data={skills} />
 			<Hr />
+			<Timeline data={item} />
+			<Hr flip={true} />
 		</div>
 	)
 }
@@ -73,8 +76,12 @@ export async function getServerSideProps(context: any) {
 	const skillsRes = await fetch(`http://${context.req.headers.host}/api/single`, { method: 'POST', body: JSON.stringify(req) })
 	const skills = await skillsRes.json()
 
+	req.name = 'timeline'
+	const timelineRes = await fetch(`http://${context.req.headers.host}/api/single`, { method: 'POST', body: JSON.stringify(req) })
+	const { item } = await timelineRes.json()
+
 	return {
-		props: { data, about, skills },
+		props: { data, about, skills, item },
 	}
 }
 
