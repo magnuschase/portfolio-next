@@ -7,6 +7,11 @@ fields:
   config:
     required: false
   label: Title
+- name: github
+  type: text
+  config:
+    required: false
+  label: Github
 - name: desc
   type: textarea
   default: ''

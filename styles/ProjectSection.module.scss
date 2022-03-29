@@ -1,0 +1,66 @@
+@import "./breakpoints.scss";
+
+.aaa {
+	@apply text-projects-100;
+}
+
+.bbb {
+	@apply text-projects-200;
+}
+
+.ccc {
+	@apply text-projects-300;
+}
+
+.ddd {
+	@apply text-projects-400;
+}
+
+.eee {
+	@apply text-projects-500;
+}
+
+.title {
+	@apply text-5xl font-thin text-kapala-shadow;
+}
+
+.link {
+	width: max-content;
+}
+
+.button {
+	border-radius: 49% 51% 50% 50% / 73% 72% 28% 27%;
+	@apply border-4 border-kapala-shadow text-kapala-shadow flex justify-center p-12 font-light text-3xl items-center;
+
+	@include to('md') {
+		@apply hidden
+	}
+}
+
+.container {
+	@apply grid grid-cols-2 gap-10 px-24;
+
+	@include to('lg') {
+		@apply grid-cols-1
+	}
+
+	@include to('sm') {
+		@apply px-10
+	}
+}
+
+.projects {
+	@apply flex flex-col;
+
+	@include to('lg') {
+		@apply hidden
+	}
+}
+
+.featured {
+	@apply grid grid-cols-2 gap-4 cursor-pointer;
+
+	@include to('sm') {
+		@apply grid-cols-1
+	}
+}

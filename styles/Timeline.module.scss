@@ -3,7 +3,7 @@
 .polygon {
 	clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
 	@apply bg-kapala-700 text-kapala-20 w-16 h-16 flex justify-center items-center font-thin justify-self-center select-none 
-	cursor-pointer;
+	cursor-pointer pt-2;
 
 }
 

@@ -1,0 +1,20 @@
+@import "./breakpoints.scss";
+
+.modal {
+	position: fixed;
+	z-index: 200;
+	top: 0;
+	left: 0;
+	@apply bg-kapala-850 bg-opacity-60 w-screen h-screen flex justify-center items-center;
+}
+
+.container {
+	width: 75vw;
+	overflow-y: auto;
+	@apply bg-kapala-850 rounded-lg flex items-center justify-center aspect-video relative;
+
+	@include to('md') {
+		height: 90vh;
+		@apply aspect-auto;
+	}
+}

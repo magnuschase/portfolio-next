@@ -1,4 +1,3 @@
-import parse from 'html-react-parser'
 import styles from '../styles/Timeline.module.scss'
 import { useState } from 'react'
 
@@ -12,11 +11,11 @@ type Item = {
 
 const Timeline = (props: { data: Array<Item> }) => {
 	const [active, setActive] = useState(0)
+
 	return (
 		<section className={styles.timeline}>
 			<div className="grid grid-cols-2">
 				{props.data.map((element: Item, index: number) => {
-					console.log(active, index)
 					if (index % 2 == 0) return (
 						<>
 							<div className="flex justify-center items-center relative pl-12" key={element.abbr}>

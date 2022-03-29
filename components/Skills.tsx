@@ -21,7 +21,7 @@ const Skills = (props: { data: SkillsProps }) => {
 				})}
 			</div>
 			<div className="grid grid-cols-1">
-				<h1 className="font-light md:font-thin text-3xl md:text-5xl">{props.data.title}</h1>
+				<h1 className="font-light md:font-thin text-3xl md:text-5xl text-kapala-shadow">{props.data.title}</h1>
 				<div className={`font-lighter md:font-thin text-lg md:text-2xl ${styles.list}`}>{parse(props.data.post_content)}</div>
 			</div>
 		</section>
