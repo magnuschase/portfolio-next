@@ -28,7 +28,7 @@ const Project = (props: { data: ProjectProps, visible: boolean, setVisible: Func
 					className={styles.modal}
 				>
 					<div className={styles.container}>
-						<motion.button className='text-kapala-700 text-xl absolute top-4 right-4' onClick={() => props.setVisible(!props.visible)}>
+						<motion.button className={styles.close} onClick={() => props.setVisible(!props.visible)}>
 							<motion.svg
 								xmlns="http://www.w3.org/2000/svg"
 								width="36"
@@ -41,17 +41,17 @@ const Project = (props: { data: ProjectProps, visible: boolean, setVisible: Func
 						</motion.button>
 						<Slider data={props.data.gallery} />
 						<div className={styles.data}>
-							<div className="text-5xl text-kapala-shadow pr-10 font-thin">{props.data.title}</div>
+							<div className={styles.title}>{props.data.title}</div>
 							<div className="flex flex-row flex-wrap">
-								<div className="text-2xl text-kapala-400 pr-5 font-thin italic">{date}</div>
+								<div className={styles.year}>{date}</div>
 								{
 									props.data.github != undefined && (
-										<a href={props.data.github} className="border-2 border-kapala-shadow rounded-lg shadow-kapala-400/70 font-thin shadow-sm px-2 py-1 text-kapala-shadow">GitHub</a>
+										<a href={props.data.github} className={styles.github}>GitHub</a>
 									)
 								}
 							</div>
 							<div className={styles.tags}>
-								{props.data.technologies.map(element => <div key={element} className="bg-kapala-700 rounded-lg shadow-kapala-700/70 shadow-sm px-4 py-2 text-kapala-850">{element}</div>)}
+								{props.data.technologies.map(element => <div key={element} className={styles.tag}>{element}</div>)}
 							</div>
 							<div className={styles.content}>
 								{parse(props.data.post_content)}
