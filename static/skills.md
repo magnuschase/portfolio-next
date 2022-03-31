@@ -18,6 +18,7 @@ logo:
 * **Front-end frameworks** - Vue, React, Laravel Blade, Svelte
 * **SSR** - NuxtJS, NextJS
 * **Back-end/scripts** - Node.js, Python
+* **Databases** - MongoDB, CouchDB, PostgreSQL, MySQL
 * **Mobile development** - React Native, Expo
 * **Styles** - TailwindCSS, Sass
 * JavaScript, TypeScript
