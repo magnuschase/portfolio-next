@@ -20,6 +20,7 @@ type SectionProps = {
 }
 
 const colors = ['aaa', 'bbb', 'ccc', 'ddd', 'eee']
+
 const ProjectSection = (props: { data: SectionProps }) => {
 	const [visible, setVisible] = useState(false)
 
@@ -29,7 +30,7 @@ const ProjectSection = (props: { data: SectionProps }) => {
 				<div className={`${styles.title} mb-8`}>{props.data.title}</div>
 				<div className="grid grid-cols-1 gap-2">
 					{colors.map((element, i) => <motion.a href="/projects" key={element} className={`${styles[element]} ${styles.link} ${i % 2 == 0 ? '' : 'pl-10'} text-5xl select-none`} whileHover={{
-						opacity: 0.8,
+						opacity: 0.65,
 						transition: { duration: 0.5 },
 					}}>{props.data.text}</motion.a>)}
 				</div>

@@ -8,10 +8,11 @@ import Skills from '../components/Skills'
 import Timeline from '../components/Timeline'
 import About from '../components/About'
 import ProjectSection from "../components/ProjectSection"
+import Footer from '../components/Footer'
 
 const Home: NextPage = ({ data, about, skills, item, project, footer }: any) => {
 	const navProps = { text: data.menu_text, first: data.first_name, last: data.last_name }
-	console.log(footer)
+
 	return (
 		<div>
 			<Head>
@@ -52,7 +53,8 @@ const Home: NextPage = ({ data, about, skills, item, project, footer }: any) => 
 			{/* Projects */}
 
 			<ProjectSection data={project} />
-			<Hr />
+
+			<Footer data={footer} />
 		</div>
 	)
 }

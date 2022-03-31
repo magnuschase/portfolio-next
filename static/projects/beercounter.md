@@ -11,6 +11,7 @@ desc: Social media web app that counts your beer consumption, with integrated ra
 date: 2021-03-22T23:00:00Z
 gallery:
 - "/uploads/beercounter-mockup-2.png"
+github: https://github.com/magnuschase/beercounter-front
 
 ---
 ### App that helps you count your beer consumption
