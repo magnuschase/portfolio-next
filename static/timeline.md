@@ -4,15 +4,10 @@ item:
   title: Zespół Szkół Łączności w Krakowie
   start_date: "2018"
   end_date: "2022"
-  desc: |
-    - database administration and management (NoSQL/SQL - MongoDB, MySQL, CouchDB, Microsoft Access),
-    - web development (Vue, React, Svelte, PHP, NodeJS, Kotlin),
-    - game development (WebGL, ThreeJS),
-    - mobile development (React Native),
-    - algorithms and data structures (Python, C++),
-    - ux/ui design, computer graphics,
-    - devops (windows/ubuntu servers, unix knowledge),
-    and many more
+  desc: During my education at ZSŁ i have learned a lot from the area of Computer
+    Science, including algorithms and data structures, DB administration and management,
+    web/mobile/game development, UX/UI design, computer graphics, DevOps and many
+    more
 - abbr: KW
   desc: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
     incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
