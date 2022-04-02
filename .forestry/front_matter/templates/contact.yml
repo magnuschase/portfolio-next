@@ -1,4 +1,62 @@
 ---
 label: Contact
 hide_body: true
-fields: []
+fields:
+- name: links
+  type: field_group_list
+  fields:
+  - name: label
+    type: text
+    config:
+      required: false
+    label: Label
+  - name: url
+    type: text
+    config:
+      required: false
+    label: URL
+  config:
+    min: 
+    max: 
+    labelField: 
+  label: Links
+- name: name_label
+  type: text
+  config:
+    required: false
+  label: Name label
+- name: name_placeholder
+  type: text
+  config:
+    required: false
+  label: Name placeholder
+- name: phone_label
+  type: text
+  config:
+    required: false
+  label: Phone label
+- name: phone_placeholder
+  type: text
+  config:
+    required: false
+  label: Phone placeholder
+- name: email_label
+  type: text
+  config:
+    required: false
+  label: Email label
+- name: email_placeholder
+  type: text
+  config:
+    required: false
+  label: Email placeholder
+- name: message_label
+  type: text
+  config:
+    required: false
+  label: Message label
+- name: message_placeholder
+  type: text
+  config:
+    required: false
+  label: Message placeholder
