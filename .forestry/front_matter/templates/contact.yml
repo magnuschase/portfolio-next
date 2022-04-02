@@ -60,3 +60,5 @@ fields:
   config:
     required: false
   label: Message placeholder
+pages:
+- static/contact.md
