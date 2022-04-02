@@ -67,7 +67,7 @@ const Contact: NextPage = ({ data, footer, contact, host }: any) => {
 					<section className={styles.links}>
 						{contact.links.map((element: any) => (
 							<motion.a
-								whileHover={{ scale: 1.1, transition: { duration: 1, delay: 0.25 } }}
+								whileHover={{ scale: 1.1, transition: { duration: 0.5, type: 'spring' } }}
 								href={element.url} key={element.label} className={styles.link}>{element.label}</motion.a>
 						))}
 					</section>
