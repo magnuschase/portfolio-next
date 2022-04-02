@@ -79,7 +79,9 @@ const Contact: NextPage = ({ data, footer, contact, host }: any) => {
 					</div>
 				</div>
 
-				<div className={styles.container_r}>
+				<motion.div initial={{ x: 1000, opacity: 0 }}
+					animate={{ x: 0, opacity: 1, transition: { duration: 1, type: "spring" } }}
+					exit={{ x: 1000, opacity: 0, transition: { duration: 1 } }} className={styles.container_r}>
 
 					<div className={styles.section_title}>Contact form</div>
 					<div className="grid grid-cols-1 gap-6 w-full">
@@ -137,7 +139,7 @@ const Contact: NextPage = ({ data, footer, contact, host }: any) => {
 					<div className="flex justify-end">
 						<button onClick={() => _handleSubmit()} className={styles.link}>Submit</button>
 					</div>
-				</div>
+				</motion.div>
 			</main>
 			<Alert data={alertData} visible={visible} setVisible={setVisible} />
 		</Layout>

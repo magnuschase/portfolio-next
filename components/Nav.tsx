@@ -38,7 +38,7 @@ const Nav = ({ props }: any) => {
 		<>
 			<header className={styles.nav}>
 				<div className={styles.nav__buttons}>
-					<motion.button whileHover={{ scale: 1.125, y: '12px' }} className={styles.nav__button}>pl</motion.button>
+					{/* <motion.button whileHover={{ scale: 1.125, y: '12px' }} className={styles.nav__button}>pl</motion.button> */}
 					<motion.button whileHover={{ scale: 1.125, y: '12px' }} className={styles.nav__buttonxl} onClick={() => cycleOpen()}>{props.text}</motion.button>
 				</div>
 				<Link href="/">
