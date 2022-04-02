@@ -11,7 +11,7 @@ export const getHtml = async (md: string) => {
 	return res.value
 }
 
-export function getPostSlugs(dir: string) {
+export function getPostSlugs(dir: string = filesDir) {
 	return fs.readdirSync(dir)
 }
 
