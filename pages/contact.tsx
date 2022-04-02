@@ -4,13 +4,11 @@ import Head from 'next/head'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 // Components
-import Nav from '../components/Nav'
-import Footer from '../components/Footer'
 import styles from '../styles/Contact.module.scss'
 import Alert from '../components/Alert'
+import Layout from '../components/Layout/Layout'
 // Utils
 import { checkField } from '../util/validator'
-import Layout from '../components/Layout/Layout'
 
 const Contact: NextPage = ({ data, footer, contact, host }: any) => {
 	const navProps = { text: data.menu_text, first: data.first_name, last: data.last_name }

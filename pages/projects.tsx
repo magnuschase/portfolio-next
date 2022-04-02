@@ -1,10 +1,7 @@
 // Libraries
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { motion } from 'framer-motion'
 // Components
-import Nav from '../components/Nav'
-import Footer from '../components/Footer'
 import styles from '../styles/Projects.page.module.scss'
 import ProjectItem from '../components/ProjectItem'
 import Layout from '../components/Layout/Layout'

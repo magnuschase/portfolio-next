@@ -1,5 +1,4 @@
 import { AnimatePresence, motion } from 'framer-motion'
-import { useState, useEffect } from 'react'
 import styles from '../styles/Alert.module.scss'
 
 type AlertProps = {

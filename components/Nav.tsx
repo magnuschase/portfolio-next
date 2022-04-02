@@ -38,14 +38,14 @@ const Nav = ({ props }: any) => {
 		<>
 			<header className={styles.nav}>
 				<div className={styles.nav__buttons}>
-					<button className={styles.nav__button}>pl</button>
-					<button className={styles.nav__buttonxl} onClick={() => cycleOpen()}>{props.text}</button>
+					<motion.button whileHover={{ scale: 1.125, y: '12px' }} className={styles.nav__button}>pl</motion.button>
+					<motion.button whileHover={{ scale: 1.125, y: '12px' }} className={styles.nav__buttonxl} onClick={() => cycleOpen()}>{props.text}</motion.button>
 				</div>
 				<Link href="/">
-					<div className={styles.nav__names}>
+					<motion.div whileHover={{ scale: 1.5, y: '12px' }} className={styles.nav__names}>
 						<h3>{`{${props.first}}`}</h3>
 						<h3>{`{${props.last}}`}</h3>
-					</div>
+					</motion.div>
 				</Link>
 			</header >
 			<AnimatePresence>

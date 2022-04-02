@@ -96,7 +96,7 @@
 	@apply text-kapala-20 font-thin text-base absolute right-[55%];
 
 	@include to('sm') {
-		@apply left-[10%] w-24
+		@apply left-[10%] w-24 text-sm
 	}
 
 	@media(max-width: 480px) {

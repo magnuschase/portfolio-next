@@ -9,15 +9,15 @@ import Nav from '../components/Nav'
 type MyProps = AppProps & { data: any, footer: any }
 
 function MyApp({ Component, pageProps }: MyProps) {
-	const navProps = { text: pageProps.data.menu_text, first: pageProps.data.first_name, last: pageProps.data.last_name }
+	const navProps = pageProps.data ? { text: pageProps.data.menu_text, first: pageProps.data.first_name, last: pageProps.data.last_name } : {}
 
 	return (
 		<>
 			<Head>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
+			{pageProps.data && <Nav props={navProps} />}
 
-			<Nav props={navProps} />
 			<AnimatePresence
 				exitBeforeEnter
 				initial={false}
@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }: MyProps) {
 			>
 				<Component {...pageProps} />
 			</AnimatePresence>
-			<Footer data={pageProps.footer} />
+			{pageProps.footer && <Footer data={pageProps.footer} />}
 		</>
 	)
 }

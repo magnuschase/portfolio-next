@@ -1,16 +1,14 @@
 // Libraries
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import { motion, AnimatePresence } from 'framer-motion'
 // Components
-import Nav from '../components/Nav'
 import Hr from '../components/Hr'
 import Skills from '../components/Skills'
 import Timeline from '../components/Timeline'
 import About from '../components/About'
 import ProjectSection from "../components/ProjectSection"
-import Footer from '../components/Footer'
 import Layout from '../components/Layout/Layout'
-import { motion, AnimatePresence } from 'framer-motion'
 
 const Home: NextPage = ({ data, about, skills, item, project, footer }: any) => {
 	const navProps = { text: data.menu_text, first: data.first_name, last: data.last_name }
@@ -24,15 +22,15 @@ const Home: NextPage = ({ data, about, skills, item, project, footer }: any) => 
 
 			{/* Main section */}
 			<AnimatePresence>
-				<motion.main initial={{ scale: 2, opacity: 0 }}
-					animate={{ scale: 1, opacity: 1, transition: { duration: 1.5 } }}
-					exit={{ scale: 0, opacity: 0, transition: { duration: 1.125 } }} className="flex items-center justify-center px-10 md:gap-10 pt-60 md:pt-48">
-					<div className="flex items-center justify-end">
+				<motion.main initial={{ x: 1000, opacity: 0 }}
+					animate={{ x: 0, opacity: 1, transition: { duration: 1, type: "spring" } }}
+					exit={{ x: 1000, opacity: 0, transition: { duration: 1 } }} className="flex items-center justify-center px-10 md:gap-10 pt-60 md:pt-48">
+					<motion.div whileHover={{ x: '12px', y: '-12px', scale: 1.05 }} className="flex items-center justify-end">
 						<img src={data.img_first} height="511px" width="304px" className="aspect-[304/511] md:h-[511px] h-300px" />
-					</div>
-					<div className="flex items-center justify-start">
+					</motion.div>
+					<motion.div whileHover={{ x: '-12px', y: '12px', scale: 1.05 }} className="flex items-center justify-start">
 						<img src={data.img_second} height="397px" width="491px" className="hidden md:block" />
-					</div>
+					</motion.div>
 				</motion.main>
 			</AnimatePresence>
 
