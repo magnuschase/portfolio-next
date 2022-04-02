@@ -7,8 +7,6 @@ type AlertProps = {
 }
 
 const Alert = (props: { data: AlertProps, visible: boolean, setVisible: Function }) => {
-	console.log(props)
-
 	const _errorStyle = () => props.data.status ? `${styles.success}` : `${styles.error}`
 
 	return (

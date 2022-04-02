@@ -41,7 +41,7 @@ export async function getAllProjects() {
 		const fileContents = fs.readFileSync(fullPath, 'utf8')
 		const { data, content } = matter(fileContents)
 		const post_content = await remark().use(html).process(content)
-		posts.push({ ...data, post_content })
+		posts.push({ ...data, post_content: post_content.value })
 		if (index == slugs.length - 1) {
 			return posts
 		}

@@ -19,7 +19,7 @@ type ProjectProps = {
 
 const Projects: NextPage = ({ data, footer, projects }: any) => {
 	const navProps = { text: data.menu_text, first: data.first_name, last: data.last_name }
-	console.log(projects)
+
 	return (
 		<Layout>
 			<Head>
