@@ -1,0 +1,120 @@
+@import './breakpoints.scss';
+
+.text {
+	opacity: 0.7;
+	resize: none;
+	@apply bg-kapala-400 rounded-lg shadow-kapala-700/70 shadow-sm px-4 py-4 text-kapala-850 text-xl font-light;
+
+	 &:focus {
+		 outline: none;
+	 }
+
+	 &::placeholder {
+		 @apply text-kapala-850 font-thin;
+	 }
+
+	 @include to('md') {
+		 @apply text-lg px-2 py-2
+	 }
+}
+
+.label {
+	@apply text-kapala-shadow opacity-70 font-thin text-5xl;
+
+	@include to("md") {
+		@apply text-2xl font-light
+	}
+}
+
+.link {
+	@apply border-2 border-kapala-shadow rounded-lg shadow-kapala-400/70 text-5xl text-center font-thin shadow-sm px-4 py-1 text-kapala-shadow;
+	width: max-content;
+
+	@include to('md') {
+		@apply text-2xl;
+	}
+}
+
+.container {
+	&_r {
+		@apply flex flex-col gap-8;
+	}
+}
+
+.main {
+	@apply grid grid-cols-2 px-24 pt-48 gap-10;
+
+	@include to('md') {
+		@apply grid-cols-1 gap-12 pt-64 px-10;
+	}
+
+	@include to('xxs') {
+		@apply pt-48;
+	}
+}
+
+.section_title {
+	@apply text-5xl text-kapala-shadow font-thin text-center;
+
+	@include to('md') {
+		@apply text-4xl;
+	}
+}
+
+.links {
+	@apply flex flex-row flex-wrap gap-6;
+
+	@include to('md') {
+		@apply justify-center gap-4;
+	}
+}
+
+.pentagon {
+	clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+	width: 240px;
+	@apply aspect-square absolute;
+
+	@include to('lg') {
+		width: 140px;
+	}
+
+	&_1 {
+		@apply bg-kapala-700 left-2 top-28;
+
+		@include to('lg') {
+			@apply left-12 top-20;
+		}
+	}
+
+	&_2 {
+		@apply bg-kapala-400 left-40 top-20;
+
+		@include from('xl'){
+			@apply right-8
+		}
+
+		@include to('lg') {
+			@apply left-36 top-16;
+		}
+	}
+
+}
+
+.hex_container {
+	@apply relative flex justify-center mt-12;
+	height: auto;
+
+	@include to('md') {
+		@apply hidden;
+	}
+}
+
+
+.image {
+	@apply absolute left-24 top-0 w-[240px] aspect-square;
+
+	@include to('lg') {
+		@apply w-[140px] top-4;
+	}
+
+}

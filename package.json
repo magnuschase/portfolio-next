@@ -18,11 +18,13 @@
 		"lint": "next lint"
 	},
 	"dependencies": {
+		"@types/draft-js": "^0.11.9",
 		"framer-motion": "^6.2.8",
 		"gray-matter": "^4.0.3",
 		"html-react-parser": "^1.4.9",
 		"next": "12.1.0",
 		"node-polyfill-webpack-plugin": "^1.1.4",
+		"nodemailer": "^6.7.3",
 		"path": "^0.12.7",
 		"path-browserify": "^1.0.1",
 		"react": "17.0.2",

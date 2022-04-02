@@ -1,0 +1,35 @@
+@import "./breakpoints.scss";
+
+.modal {
+	position: fixed;
+	z-index: 200;
+	top: 0;
+	left: 0;
+	@apply bg-kapala-850 bg-opacity-90 w-screen h-screen flex justify-center items-center;
+}
+
+.container {
+	height: max-content;
+	overflow: hidden;
+	@apply rounded-lg flex flex-col items-center gap-4 relative px-12 py-12;
+	background-color: #1f2826;
+	@include to('sm') {
+		height: max-content;
+		width: 80vw;
+		@apply aspect-auto;
+	}
+
+}
+
+.close {
+	z-index: 201;
+	@apply text-kapala-700 text-xl absolute top-4 right-4;
+}
+
+.error {
+	@apply text-red-900 text-5xl font-thin;
+}
+
+.success {
+	@apply text-teal-700 text-5xl font-thin;
+}

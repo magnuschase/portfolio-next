@@ -3,6 +3,7 @@ import styles from '../styles/ProjectSection.module.scss'
 import { motion } from "framer-motion";
 import Project from './Project'
 import { useState } from 'react'
+import Link from 'next/link'
 
 type SectionProps = {
 	post_content?: string,
@@ -29,10 +30,19 @@ const ProjectSection = (props: { data: SectionProps }) => {
 			<div className={styles.projects}>
 				<div className={`${styles.title} mb-8`}>{props.data.title}</div>
 				<div className="grid grid-cols-1 gap-2">
-					{colors.map((element, i) => <motion.a href="/projects" key={element} className={`${styles[element]} ${styles.link} ${i % 2 == 0 ? '' : 'pl-10'} text-5xl select-none`} whileHover={{
-						opacity: 0.65,
-						transition: { duration: 0.5 },
-					}}>{props.data.text}</motion.a>)}
+					{colors.map((element, i) => (
+						<Link key={element} href="/projects">
+							<motion.div
+								key={element}
+								className={`${styles[element]} ${styles.link} ${i % 2 == 0 ? '' : 'pl-10'} text-5xl select-none cursor-pointer`}
+								whileHover={{
+									opacity: 0.65, transition: { duration: 0.5 },
+								}}>
+								{props.data.text}
+							</motion.div>
+						</Link>
+
+					))}
 				</div>
 			</div>
 			<motion.div className={styles.featured} whileHover={{

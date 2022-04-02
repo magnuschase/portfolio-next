@@ -11,8 +11,8 @@ export const getHtml = async (md: string) => {
 	return res.value
 }
 
-export function getPostSlugs() {
-	return fs.readdirSync(filesDir)
+export function getPostSlugs(dir: string) {
+	return fs.readdirSync(dir)
 }
 
 export async function getPostBySlug(slug: string, extended: boolean = false) {
@@ -25,8 +25,27 @@ export async function getPostBySlug(slug: string, extended: boolean = false) {
 }
 
 export function getAllPosts() {
-	const slugs: Array<string> = getPostSlugs()
+	const slugs: Array<string> = getPostSlugs(filesDir)
 	const posts = slugs
 		.map((slug) => getPostBySlug(slug))
+	return posts
+}
+
+export async function getAllProjects() {
+	const slugs: Array<string> = getPostSlugs(`${filesDir}/projects`)
+	const posts: Array<any> = []
+
+	slugs.forEach(async (element, index) => {
+		const realSlug = element.replace(/\.md$/, '')
+		const fullPath = `${filesDir}/projects/${realSlug}.md`
+		const fileContents = fs.readFileSync(fullPath, 'utf8')
+		const { data, content } = matter(fileContents)
+		const post_content = await remark().use(html).process(content)
+		posts.push({ ...data, post_content })
+		if (index == slugs.length - 1) {
+			return posts
+		}
+	})
+
 	return posts
 }

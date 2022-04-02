@@ -23,8 +23,8 @@ const Project = (props: { data: ProjectProps, visible: boolean, setVisible: Func
 				<motion.div
 					key="modal"
 					initial={{ scale: 0, opacity: 0 }}
-					animate={{ scale: 1, opacity: 1, transition: { duration: 1.25 } }}
-					exit={{ scale: 0, opacity: 0, transition: { duration: 1.25 } }}
+					animate={{ scale: 1, opacity: 1, transition: { duration: 1.125 } }}
+					exit={{ scale: 0, opacity: 0, transition: { duration: 1.125 } }}
 					className={styles.modal}
 				>
 					<div className={styles.container}>

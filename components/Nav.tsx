@@ -1,6 +1,7 @@
 import styles from '../styles/Navbar.module.scss'
 import { AnimatePresence, motion, useCycle } from "framer-motion";
 import sidebarStyles from "../styles/Sidebar.module.scss"
+import Link from 'next/link';
 
 const links = [
 	{ name: "Home", to: "/", id: 1 },
@@ -40,10 +41,12 @@ const Nav = ({ props }: any) => {
 					<button className={styles.nav__button}>pl</button>
 					<button className={styles.nav__buttonxl} onClick={() => cycleOpen()}>{props.text}</button>
 				</div>
-				<div className={styles.nav__names}>
-					<h3>{`{${props.first}}`}</h3>
-					<h3>{`{${props.last}}`}</h3>
-				</div>
+				<Link href="/">
+					<div className={styles.nav__names}>
+						<h3>{`{${props.first}}`}</h3>
+						<h3>{`{${props.last}}`}</h3>
+					</div>
+				</Link>
 			</header >
 			<AnimatePresence>
 				{open && (
@@ -68,14 +71,11 @@ const Nav = ({ props }: any) => {
 							<motion.button onClick={() => cycleOpen()} className={sidebarStyles.close} whileHover={{ scale: 1.1 }} variants={itemVariants}>X</motion.button>
 
 							{links.map(({ name, to, id }) => (
-								<motion.a
-									key={id}
-									href={to}
+								<motion.div key={id}
 									whileHover={{ scale: 1.1 }}
-									variants={itemVariants}
-								>
-									{name}
-								</motion.a>
+									variants={itemVariants}>
+									<Link href={to}>{name}</Link>
+								</motion.div>
 							))}
 						</motion.div>
 					</motion.aside>

@@ -12,6 +12,10 @@
 
 	&__button {
 		@apply p-3 border-kapala-shadow border rounded-lg text-base font-thin;
+
+		@include to('md') {
+			@apply font-light
+		}
 	}
 
 	&__buttons {
@@ -37,10 +41,14 @@
 	&__buttonxl {
 		@apply nav__button;
 		@apply px-9;
+
+		@include from('md') {
+			@apply font-thin
+		}
 	}
 
 	&__names {
-		@apply text-5xl font-thin flex;
+		@apply text-5xl font-thin flex select-none cursor-pointer;
 
 		& > h3 {
 			@apply px-12;

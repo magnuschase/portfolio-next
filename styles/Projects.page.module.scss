@@ -1,0 +1,35 @@
+@import "./breakpoints.scss";
+
+.main {
+	min-height: 85vh;
+	@apply flex flex-col px-24 pt-48 gap-10;
+
+	@include to('md') {
+		@apply gap-12 pt-64 px-10;
+	}
+
+	@include to('xxs') {
+		@apply pt-48;
+	}
+}
+
+.name {
+	@apply text-5xl text-kapala-shadow font-thin;
+}
+
+.featured {
+	@apply grid grid-cols-2 gap-4 cursor-pointer;
+
+	@include to('sm') {
+		@apply grid-cols-1
+	}
+}
+
+.button {
+	border-radius: 49% 51% 50% 50% / 73% 72% 28% 27%;
+	@apply border-4 border-kapala-shadow text-kapala-shadow flex justify-center p-12 font-light text-3xl items-center;
+
+	@include to('md') {
+		@apply hidden
+	}
+}
