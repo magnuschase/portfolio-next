@@ -42,7 +42,7 @@ const Nav = ({ props }: any) => {
 					<motion.button whileHover={{ scale: 1.125, y: '12px' }} className={styles.nav__buttonxl} onClick={() => cycleOpen()}>{props.text}</motion.button>
 				</div>
 				<Link href="/">
-					<motion.div whileHover={{ scale: 1.5, y: '12px' }} className={styles.nav__names}>
+					<motion.div whileHover={{ scale: 1.2, y: '12px' }} className={styles.nav__names}>
 						<h3>{`{${props.first}}`}</h3>
 						<h3>{`{${props.last}}`}</h3>
 					</motion.div>
