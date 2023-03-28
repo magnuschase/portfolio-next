@@ -11,7 +11,7 @@ interface SliderPayload {
 const Slider: React.FC<SliderPayload> = ({data}) => {
 
 	return (
-		<div>
+		<div className="h-full">
 			<Swiper
 				slidesPerView={1}
 				autoplay={{
@@ -19,11 +19,11 @@ const Slider: React.FC<SliderPayload> = ({data}) => {
 					disableOnInteraction: false
 				}}
 				modules={[Autoplay]}
-				className="w-auto"
+				className="w-auto h-auto"
 			>
 				{data.map(({url}) => (
-					<SwiperSlide key={url}>
-						<img src={url} alt="project image" className="w-4/5" />
+					<SwiperSlide key={url} className='flex items-center justify-center'>
+						<img src={url} alt="project image" className="md:w-auto md:max-h-[40vw] sm:w-1/2 w-4/5" />
 					</SwiperSlide>
 				))}
 			</Swiper>
