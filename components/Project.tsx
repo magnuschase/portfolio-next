@@ -42,8 +42,9 @@ const Project: React.FC<ProjectPayload> = ({
 					animate={{ scale: 1, opacity: 1, transition: { duration: 1.125 } }}
 					exit={{ scale: 0, opacity: 0, transition: { duration: 1.125 } }}
 					className={styles.modal}
+					onClick={() => setVisible(!visible)}
 				>
-					<div className={styles.container}>
+					<div className={styles.container} onClick={(e) => e.stopPropagation()}>
 						<motion.button className={styles.close} onClick={() => setVisible(!visible)}>
 							<motion.svg
 								xmlns="http://www.w3.org/2000/svg"

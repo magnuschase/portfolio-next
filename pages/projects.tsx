@@ -1,24 +1,20 @@
 // Libraries
 import type { NextPage } from 'next'
+import { GraphQLClient } from 'graphql-request'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
 // Components
 import styles from '../styles/Projects.page.module.scss'
 import ProjectItem from '../components/ProjectItem'
 import Layout from '../components/Layout/Layout'
+import { GET_PROJECTS_QUERY } from '../util/queries/getProjects'
+import ProjectData from '../types/ProjectData.interface'
 
-type ProjectProps = {
-	date: string,
-	desc: string,
-	gallery: Array<string>,
-	post_content: string,
-	technologies: Array<string>
-	title: string,
-	github: string
+interface ProjectPagePayload {
+	projects: ProjectData[]
 }
 
-const Projects: NextPage = ({ data, footer, projects }: any) => {
-	const navProps = { text: data.menu_text, first: data.first_name, last: data.last_name }
+const Projects: NextPage<ProjectPagePayload> = ({ projects }) => {
 
 	return (
 		<Layout>
@@ -32,7 +28,7 @@ const Projects: NextPage = ({ data, footer, projects }: any) => {
 				<motion.div initial={{ x: 2000, opacity: 0 }}
 					animate={{ x: 0, opacity: 1, transition: { duration: 1, type: "spring" } }}
 					exit={{ x: 2000, opacity: 0, transition: { duration: 1 } }} className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-					{projects.map((element: ProjectProps) => <ProjectItem key={element.title} data={element} />)}
+					{projects.map((element) => <ProjectItem key={element.title} data={element} />)}
 				</motion.div>
 			</main>
 		</Layout>
@@ -41,21 +37,20 @@ const Projects: NextPage = ({ data, footer, projects }: any) => {
 
 // Fetch data from API
 export async function getServerSideProps(context: any) {
-	const req = { name: "main" }
+	if (!process.env.HYGRAPH_API_URL || !process.env.HYGRAPH_API_TOKEN) return { props: {} }
 
-	const res = await fetch(`http://${context.req.headers.host}/api/single`, { method: 'POST', body: JSON.stringify(req) })
-	const data = await res.json()
-
-	req.name = 'footer'
-	const footerRes = await fetch(`http://${context.req.headers.host}/api/single`, { method: 'POST', body: JSON.stringify(req) })
-	const footer = await footerRes.json()
-
-	const projectsRes = await fetch(`http://${context.req.headers.host}/api/projects`, { method: 'POST' })
-	const projects = await projectsRes.json()
-
+	const client = new GraphQLClient(
+		process.env.HYGRAPH_API_URL,
+		{
+			headers: {
+				Authorization: `Bearer ${process.env.HYGRAPH_API_TOKEN}`
+			}
+		}
+	)
+	const props = await client.request(GET_PROJECTS_QUERY) as { projects: ProjectData[] }
 
 	return {
-		props: { data, footer, projects },
+		props
 	}
 }
 

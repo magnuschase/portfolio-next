@@ -68,20 +68,6 @@ const Home: NextPage<FrontPagePayload> = ({
 	)
 }
 
-const fetchProjectsData = async (context: any) => {
-	const req = { name: 'project-section' }
-	const projectRes = await fetch(`http://${context.req.headers.host}/api/single`, { method: 'POST', body: JSON.stringify(req) })
-	const project = await projectRes.json()
-
-	const name = project.project.split('/')[2]
-
-	req.name = `projects/${name}`
-	const res = await fetch(`http://${context.req.headers.host}/api/single`, { method: 'POST', body: JSON.stringify(req) })
-	project.project = await res.json()
-
-	return project
-}
-
 // Fetch data from API
 export async function getServerSideProps(context: any) {
 	if (!process.env.HYGRAPH_API_URL || !process.env.HYGRAPH_API_TOKEN) return { props: {} }
