@@ -27,7 +27,7 @@ const Projects: NextPage<ProjectPagePayload> = ({ projects }) => {
 				<h1 className={styles.name}>Projects</h1>
 				<motion.div initial={{ x: 2000, opacity: 0 }}
 					animate={{ x: 0, opacity: 1, transition: { duration: 1, type: "spring" } }}
-					exit={{ x: 2000, opacity: 0, transition: { duration: 1 } }} className="grid grid-cols-1 lg:grid-cols-2 gap-10">
+					exit={{ x: 2000, opacity: 0, transition: { duration: 1 } }} className="grid grid-cols-1 lg:grid-cols-3 gap-20">
 					{projects.map((element) => <ProjectItem key={element.title} data={element} />)}
 				</motion.div>
 			</main>
