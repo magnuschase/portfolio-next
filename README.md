@@ -3,7 +3,7 @@
 ## Technologies
 
 - React + NextJS (TypeScript)
-- Forestry.io (CMS, markdown based content)
+- Hygraph (Headless, GraphQL based CMS)
 - TailwindCSS + SCSS
 - FramerMotion (animations)
 
