@@ -9,25 +9,49 @@ import Alert from '../components/Alert'
 import Layout from '../components/Layout/Layout'
 // Utils
 import { checkField } from '../util/validator'
+import { GraphQLClient } from 'graphql-request'
+import { CONTACT_PAGE_QUERY } from '../util/queries/contactPage'
 
-const Contact: NextPage = ({ data, footer, contact, host }: any) => {
-	const navProps = { text: data.menu_text, first: data.first_name, last: data.last_name }
-	const [name, setName] = useState('')
-	const [phone, setPhone] = useState('')
-	const [email, setEmail] = useState('')
+interface FormItem {
+	label: string,
+	placeholder: string
+}
+interface HygraphContactPage {
+	links: { label: string, url: string }[],
+	email: FormItem,
+	phone: FormItem,
+	message: FormItem,
+	name: FormItem
+}
+
+interface ContactPagePayload extends HygraphContactPage {
+	host: string
+}
+
+const Contact: NextPage<ContactPagePayload> = ({
+	links,
+	email,
+	message,
+	name,
+	phone,
+	host
+}) => {
+	const [userName, setUserName] = useState('')
+	const [userPhone, setUserPhone] = useState('')
+	const [userEmail, setUserEmail] = useState('')
 	const [text, setText] = useState('')
 
 	const [alertData, setAlertData] = useState({ message: '', status: false })
 	const [visible, setVisible] = useState(false)
 
 	const _handleSubmit = async () => {
-		const nameResult = checkField('name', name);
-		const emailResult = checkField('mail', email);
+		const nameResult = checkField('name', userName);
+		const emailResult = checkField('mail', userEmail);
 		const textResult = checkField('message', text);
 
 		if (nameResult.status && emailResult.status && textResult.status) {
 			const req = { text, name, email, phone }
-			const res = await fetch(`http://${host.name}/api/send`, { method: 'POST', body: JSON.stringify(req) })
+			const res = await fetch(`http://${host}/api/send`, { method: 'POST', body: JSON.stringify(req) })
 			const data = await res.text()
 
 			if (data.startsWith('2')) {
@@ -65,7 +89,7 @@ const Contact: NextPage = ({ data, footer, contact, host }: any) => {
 					<div className={styles.section_title}>Links</div>
 
 					<section className={styles.links}>
-						{contact.links.map((element: any) => (
+						{links.map((element: any) => (
 							<motion.a
 								whileHover={{ scale: 1.1, transition: { duration: 0.5, type: 'spring' } }}
 								href={element.url} key={element.label} className={styles.link}>{element.label}</motion.a>
@@ -75,7 +99,7 @@ const Contact: NextPage = ({ data, footer, contact, host }: any) => {
 					<div className={styles.hex_container}>
 						<div className={`${styles.pentagon} ${styles.pentagon_1}`}></div>
 						<div className={`${styles.pentagon} ${styles.pentagon_2}`}></div>
-						<img src="/polygon-border.svg" className={styles.image} />
+						<img src="/polygon-border.svg" className={styles.image} alt=''/>
 					</div>
 				</div>
 
@@ -85,53 +109,53 @@ const Contact: NextPage = ({ data, footer, contact, host }: any) => {
 
 					<div className={styles.section_title}>Contact form</div>
 					<div className="grid grid-cols-1 gap-6 w-full">
-						<p className={styles.label}>{contact.name_label}</p>
-						<motion.input type="text" value={name}
-							placeholder={contact.name_placeholder}
-							onChange={e => setName(e.target.value)}
+						<p className={styles.label}>{name.label}</p>
+						<motion.input type="text" value={userName}
+							placeholder={name.placeholder}
+							onChange={e => setUserName(e.target.value)}
 							whileFocus={{ opacity: 1, transition: { duration: 1, delay: 0.25 } }}
 							className={styles.text}
 						/>
 					</div>
 
 					<div className="hidden grid-cols-2 gap-6 w-full sm:grid">
-						<p className={styles.label}>{contact.phone_label}</p>
-						<p className={styles.label}>{contact.email_label}</p>
-						<motion.input type="text" value={phone}
-							placeholder={contact.phone_placeholder}
-							onChange={e => setPhone(e.target.value)}
+						<p className={styles.label}>{phone.label}</p>
+						<p className={styles.label}>{email.label}</p>
+						<motion.input type="text" value={userPhone}
+							placeholder={phone.placeholder}
+							onChange={e => setUserPhone(e.target.value)}
 							whileFocus={{ opacity: 1, transition: { duration: 1, delay: 0.25 } }}
 							className={styles.text}
 						/>
-						<motion.input type="email" value={email}
-							placeholder={contact.email_placeholder}
-							onChange={e => setEmail(e.target.value)}
+						<motion.input type="email" value={userEmail}
+							placeholder={email.placeholder}
+							onChange={e => setUserEmail(e.target.value)}
 							whileFocus={{ opacity: 1, transition: { duration: 1, delay: 0.25 } }}
 							className={styles.text}
 						/>
 					</div>
 
 					<div className="grid grid-cols-1 gap-6 w-full sm:hidden">
-						<p className={styles.label}>{contact.phone_label}</p>
-						<motion.input type="text" value={phone}
-							placeholder={contact.phone_placeholder}
-							onChange={e => setPhone(e.target.value)}
+						<p className={styles.label}>{phone.label}</p>
+						<motion.input type="text" value={userPhone}
+							placeholder={phone.placeholder}
+							onChange={e => setUserPhone(e.target.value)}
 							whileFocus={{ opacity: 1, transition: { duration: 1, delay: 0.25 } }}
 							className={styles.text}
 						/>
-						<p className={styles.label}>{contact.email_label}</p>
-						<motion.input type="email" value={email}
-							placeholder={contact.email_placeholder}
-							onChange={e => setEmail(e.target.value)}
+						<p className={styles.label}>{email.label}</p>
+						<motion.input type="email" value={userEmail}
+							placeholder={email.placeholder}
+							onChange={e => setUserEmail(e.target.value)}
 							whileFocus={{ opacity: 1, transition: { duration: 1, delay: 0.25 } }}
 							className={styles.text}
 						/>
 					</div>
 
 					<div className="grid grid-cols-1 gap-6 w-full">
-						<p className={styles.label}>{contact.message_label}</p>
+						<p className={styles.label}>{message.label}</p>
 						<motion.textarea
-							placeholder={contact.message_placeholder} value={text} onChange={e => setText(e.target.value)}
+							placeholder={message.placeholder} value={text} onChange={e => setText(e.target.value)}
 							whileFocus={{ opacity: 1, transition: { duration: 1, delay: 0.25 } }}
 							className={styles.text} id="" cols={30} rows={5}></motion.textarea>
 					</div>
@@ -148,23 +172,22 @@ const Contact: NextPage = ({ data, footer, contact, host }: any) => {
 
 // Fetch data from API
 export async function getServerSideProps(context: any) {
-	const req = { name: "main" }
+	if (!process.env.HYGRAPH_API_URL || !process.env.HYGRAPH_API_TOKEN) return { props: {} }
 
-	const res = await fetch(`http://${context.req.headers.host}/api/single`, { method: 'POST', body: JSON.stringify(req) })
-	const data = await res.json()
+	const client = new GraphQLClient(
+		process.env.HYGRAPH_API_URL,
+		{
+			headers: {
+				Authorization: `Bearer ${process.env.HYGRAPH_API_TOKEN}`
+			}
+		}
+	)
 
-	req.name = 'footer'
-	const footerRes = await fetch(`http://${context.req.headers.host}/api/single`, { method: 'POST', body: JSON.stringify(req) })
-	const footer = await footerRes.json()
-
-	req.name = 'contact'
-	const contactRes = await fetch(`http://${context.req.headers.host}/api/single`, { method: 'POST', body: JSON.stringify(req) })
-	const contact = await contactRes.json()
-
-	const host = { name: context.req.headers.host }
+	const { contactPage } = await client.request(CONTACT_PAGE_QUERY) as { contactPage: HygraphContactPage }
+	const { host } = context.req.headers
 
 	return {
-		props: { data, footer, contact, host },
+		props: { ...contactPage, host },
 	}
 }
 

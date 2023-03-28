@@ -1,14 +1,15 @@
 @import "./breakpoints.scss";
 
 .list {
-	@apply mt-12;
+	@apply mt-10;
 
 	@include to('lg') {
 		@apply mt-4
 	}
 
 	li {
-		@apply mb-4;
+		@apply mb-2;
+		display: inline-block;
 		&::before {
 			content: "- "
 		}

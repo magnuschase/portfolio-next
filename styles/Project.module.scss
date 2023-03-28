@@ -60,6 +60,14 @@
 			@apply text-sm font-thin
 		}
 	}
+
+	div {
+		@apply mt-4;
+		
+		p {
+			@apply font-thin;
+		}
+	}
 }
 
 .title {

@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from '../styles/Navbar.module.scss'
 import { AnimatePresence, motion, useCycle } from "framer-motion";
 import sidebarStyles from "../styles/Sidebar.module.scss"
@@ -31,20 +32,19 @@ const sideVariants = {
 	}
 };
 
-const Nav = ({ props }: any) => {
-	const [open, cycleOpen] = useCycle(false, true);
+const Nav: React.FC = () => {
+	const [open, cycleOpen] = useCycle(false, true)
 
 	return (
 		<>
 			<header className={styles.nav}>
 				<div className={styles.nav__buttons}>
-					{/* <motion.button whileHover={{ scale: 1.125, y: '12px' }} className={styles.nav__button}>pl</motion.button> */}
-					<motion.button whileHover={{ scale: 1.125, y: '12px' }} className={styles.nav__buttonxl} onClick={() => cycleOpen()}>{props.text}</motion.button>
+					<motion.button whileHover={{ scale: 1.125, y: '12px' }} className={styles.nav__buttonxl} onClick={() => cycleOpen()}>menu</motion.button>
 				</div>
-				<Link href="/">
+				<Link href="/" passHref>
 					<motion.div whileHover={{ scale: 1.2, y: '12px' }} className={styles.nav__names}>
-						<h3>{`{${props.first}}`}</h3>
-						<h3>{`{${props.last}}`}</h3>
+						<h3>{`{jakub}`}</h3>
+						<h3>{`{kapala}`}</h3>
 					</motion.div>
 				</Link>
 			</header >

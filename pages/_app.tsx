@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }: MyProps) {
 			<Head>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			{pageProps.data && <Nav props={navProps} />}
+			<Nav />
 
 			<AnimatePresence
 				exitBeforeEnter
@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }: MyProps) {
 			>
 				<Component {...pageProps} />
 			</AnimatePresence>
-			{pageProps.footer && <Footer data={pageProps.footer} />}
+			<Footer />
 		</>
 	)
 }

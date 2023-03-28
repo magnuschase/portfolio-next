@@ -1,15 +1,10 @@
-type FooterProps = {
-	text: string,
-	mail: string,
-	button: string,
-	post_content?: string,
-}
+import React from "react"
 
-const Footer = (props: { data: any }) => {
+const Footer: React.FC = () => {
 	return (
 		<div className="w-screen py-4 px-10 border-t border-kapala-400 text-kapala-400 font-thin mt-12 flex justify-between">
-			<a href={`mailto:${props.data.mail}`}>{props.data.text} <span className="font-medium">{props.data.mail}</span></a>
-			<a href="#">{props.data.button}</a>
+			<a href={`mailto:jakub@kapala.xyz`}>contact me at <span className="font-medium">jakub@kapala.xyz</span></a>
+			<a href="#">go up</a>
 		</div>
 	)
 }
