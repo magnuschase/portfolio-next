@@ -1,4 +1,4 @@
-import HygraphImage from "./HygraphImage"
+import HygraphImage from "./HygraphImage.interface"
 
 export default interface SkillsSection {
 	logos: HygraphImage[],

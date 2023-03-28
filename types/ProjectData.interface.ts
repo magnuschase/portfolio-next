@@ -1,4 +1,4 @@
-import HygraphImage from "./frontPage/HygraphImage"
+import HygraphImage from "./frontPage/HygraphImage.interface"
 
 export default interface ProjectData {
 	title: string,
