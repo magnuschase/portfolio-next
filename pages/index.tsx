@@ -2,6 +2,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import { motion, AnimatePresence } from 'framer-motion'
+import { GraphQLClient } from 'graphql-request'
 // Components
 import Hr from '../components/Hr'
 import Skills from '../components/Skills'
@@ -9,9 +10,18 @@ import Timeline from '../components/Timeline'
 import About from '../components/About'
 import ProjectSection from "../components/ProjectSection"
 import Layout from '../components/Layout/Layout'
+// Constants
+import { FRONT_PAGE_QUERY } from '../util/queries/frontPage'
+import FrontPagePayload from '../types/frontPage/FrontPagePayload.interface'
 
-const Home: NextPage = ({ data, about, skills, item, project, footer }: any) => {
-	const navProps = { text: data.menu_text, first: data.first_name, last: data.last_name }
+const Home: NextPage<FrontPagePayload> = ({
+	aboutMe,
+	academic,
+	mainSectionImages,
+	projectSection,
+	workExperience,
+	skills
+}) => {
 
 	return (
 		<Layout>
@@ -26,35 +36,34 @@ const Home: NextPage = ({ data, about, skills, item, project, footer }: any) => 
 					animate={{ x: 0, opacity: 1, transition: { duration: 1, type: "spring" } }}
 					exit={{ x: 1000, opacity: 0, transition: { duration: 1 } }} className="flex items-center justify-center px-10 md:gap-10 pt-60 md:pt-48">
 					<motion.div whileHover={{ x: '12px', y: '-12px', scale: 1.05 }} className="flex items-center justify-end">
-						<img src={data.img_first} height="511px" width="304px" className="aspect-[304/511] md:h-[511px] h-300px" />
+						<img src={mainSectionImages[0].url} height="511px" width="304px" className="aspect-[304/511] md:h-[511px] h-300px" alt=''/>
 					</motion.div>
 					<motion.div whileHover={{ x: '-12px', y: '12px', scale: 1.05 }} className="flex items-center justify-start">
-						<img src={data.img_second} height="397px" width="491px" className="hidden md:block" />
+						<img src={mainSectionImages[1].url} height="397px" width="491px" className="hidden md:block" alt='' />
 					</motion.div>
 				</motion.main>
 			</AnimatePresence>
 
-
 			<Hr />
 
 			{/* About us */}
-			<About data={about} />
+			<About {...aboutMe} />
 
 			<Hr flip={true} />
 
 			{/* Skills */}
-			<Skills data={skills} />
+			<Skills {...skills} />
 
 			<Hr />
 
 			{/* Timeline */}
-			<Timeline data={item} />
+			<Timeline data={workExperience} />
 
 			<Hr flip={true} />
 
 			{/* Projects */}
 
-			<ProjectSection data={project} />
+			<ProjectSection {...projectSection} />
 		</Layout>
 	)
 }
@@ -75,31 +84,20 @@ const fetchProjectsData = async (context: any) => {
 
 // Fetch data from API
 export async function getServerSideProps(context: any) {
-	const req = { name: "main" }
+	if (!process.env.HYGRAPH_API_URL || !process.env.HYGRAPH_API_TOKEN) return { props: {} }
 
-	const res = await fetch(`http://${context.req.headers.host}/api/single`, { method: 'POST', body: JSON.stringify(req) })
-	const data = await res.json()
-
-	req.name = 'about'
-	const secondRes = await fetch(`http://${context.req.headers.host}/api/single`, { method: 'POST', body: JSON.stringify(req) })
-	const about = await secondRes.json()
-
-	req.name = 'skills'
-	const skillsRes = await fetch(`http://${context.req.headers.host}/api/single`, { method: 'POST', body: JSON.stringify(req) })
-	const skills = await skillsRes.json()
-
-	req.name = 'timeline'
-	const timelineRes = await fetch(`http://${context.req.headers.host}/api/single`, { method: 'POST', body: JSON.stringify(req) })
-	const { item } = await timelineRes.json()
-
-	const project = await fetchProjectsData(context)
-
-	req.name = 'footer'
-	const footerRes = await fetch(`http://${context.req.headers.host}/api/single`, { method: 'POST', body: JSON.stringify(req) })
-	const footer = await footerRes.json()
+	const client = new GraphQLClient(
+		process.env.HYGRAPH_API_URL,
+		{
+			headers: {
+				Authorization: `Bearer ${process.env.HYGRAPH_API_TOKEN}`
+			}
+		}
+	)
+	const { frontPage } = await client.request(FRONT_PAGE_QUERY) as { frontPage: FrontPagePayload }
 
 	return {
-		props: { data, about, skills, item, project, footer },
+		props: frontPage,
 	}
 }
 

@@ -1,7 +1,14 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
+import React from 'react'
 import { Autoplay } from 'swiper'
 import 'swiper/css'
-const Slider = (props: { data: Array<string> }) => {
+import HygraphImage from '../types/frontPage/HygraphImage.interface'
+
+interface SliderPayload {
+	data: HygraphImage[]
+}
+
+const Slider: React.FC<SliderPayload> = ({data}) => {
 
 	return (
 		<div>
@@ -14,9 +21,9 @@ const Slider = (props: { data: Array<string> }) => {
 				modules={[Autoplay]}
 				className="w-auto"
 			>
-				{props.data.map(element => (
-					<SwiperSlide key={element}>
-						<img src={element} alt="project image" className="w-4/5" />
+				{data.map(({url}) => (
+					<SwiperSlide key={url}>
+						<img src={url} alt="project image" className="w-4/5" />
 					</SwiperSlide>
 				))}
 			</Swiper>

@@ -1,8 +1,12 @@
 import styles from '../styles/About.module.scss'
-import parse from 'html-react-parser'
+import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import AboutMe from '../types/frontPage/AboutMe.interface'
 
-function About(props: { data: any }) {
+const About: React.FC<AboutMe> = ({
+	title,
+	content
+}) => {
 
 	return (
 		<section className="grid grid-cols-1 lg:grid-cols-2 gap-24 px-10 md:px-24 mb-12">
@@ -11,12 +15,13 @@ function About(props: { data: any }) {
 					whileInView={{ opacity: 1, scale: 1 }}
 					viewport={{ once: true }}
 					transition={{ duration: 0.7, type: "spring", delay: .3 }} className="grid grid-cols-1 gap-y-6 md:gap-y-12 px-0 xl:px-24">
-					<h1 className="font-light md:font-thin text-3xl md:text-5xl text-kapala-shadow">{props.data.title}</h1>
+					<h1 className="font-light md:font-thin text-3xl md:text-5xl text-kapala-shadow">{title}</h1>
 					<motion.div
-						className="font-light md:font-thin text-lg md:text-2xl">
-						{parse(props.data.post_content)}
+						className="font-light md:font-thin text-lg md:text-2xl"
+					>
+						{content.text}
 					</motion.div>
-					<a href={`mailto:${props.data.mail}`} className="italic text-xl">{props.data.footer}<span className="font-medium not-italic">{props.data.mail}</span></a>
+					<a href={`mailto:jakub@kapala.xyz`} className="italic text-xl">Feel free to hit me up - <span className="font-medium not-italic">jakub@kapala.xyz</span></a>
 				</motion.div>
 			</AnimatePresence>
 

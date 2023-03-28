@@ -111,7 +111,7 @@
 
 
 .image {
-	@apply absolute left-24 top-0 w-[240px] aspect-square;
+	@apply absolute left-24 top-0 w-[240px] aspect-square select-none;
 
 	@include to('lg') {
 		@apply w-[140px] top-4;
