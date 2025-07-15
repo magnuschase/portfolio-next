@@ -29,7 +29,7 @@ const Timeline: React.FC<TimelinePayload> = ({data}) => {
 					whileInView={{ opacity: 1, scale: 1 }}
 					viewport={{ once: true }}
 					transition={{ duration: 0.7, type: 'spring', delay: 0.3 }} className="grid grid-cols-2">
-					{data.reverse().map((element, index) => {
+					{data.map((element, index) => {
 						if (index % 2 == 0) return (
 							<React.Fragment key={element.abbr}>
 								<div className="flex justify-center items-center relative pl-12" key={element.abbr}>
